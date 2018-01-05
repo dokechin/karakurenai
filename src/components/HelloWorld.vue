@@ -2,8 +2,8 @@
   <div class="hello">
     <h1>{{ title }}</h1>
     <h2>{{ fuda }}</h2>
-    <button v-on:click="nextFuda" :disabled="index == 99">読み上げ</button>
-    <button v-on:click="read">もう一度</button>
+    <button id="next" v-on:click="nextFuda" :disabled="index == 99">読み上げ</button>
+    <button id="again" v-on:click="read">もう一度</button>
   </div>
 </template>
 
@@ -162,7 +162,7 @@ ul {
 }
 li {
   display: inline-block;
-  margin: 0 10px;
+  margin: 0 10px; 
 }
 a {
   color: #42b983;
