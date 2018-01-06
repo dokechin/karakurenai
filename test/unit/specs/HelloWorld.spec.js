@@ -30,19 +30,22 @@ describe('HelloWorld.vue', () => {
     .toEqual('1首目')
 
     for(var i=0;i<99;i++){
+      const nextButton = vm.$el.querySelector('button#next');
       nextButton.dispatchEvent(clickEvent);
       vm._watcher.run();
+
+      if (i < 98){
+        expect(nextButton.disabled)
+        .toEqual(false)
+      }
+      else{
+        expect(nextButton.disabled)
+        .toEqual(true)        
+      }
 
       expect(vm.$el.querySelector('.hello h2').textContent)
       .toEqual( (i + 2 ) + '首目')
     }
-
-    const lastButton = vm.$el.querySelector('button#again');
-    lastButton.dispatchEvent(clickEvent);
-    vm._watcher.run();
-
-    expect(vm.$el.querySelector('.hello h2').textContent)
-    .toEqual( '100首目')
 
   })
 })
